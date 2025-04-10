@@ -1,0 +1,74 @@
+{
+  "cores": {
+    "Core_1": {
+      "speed_factor": 0.62,
+      "scheduler_type": "RM",
+      "components": {
+        "root_Core_1": {
+          "component_id": "root_Core_1",
+          "scheduler_type": "RM",
+          "utilization": 0,
+          "alpha": null,
+          "delta": null,
+          "budget": null,
+          "period": null,
+          "tasks": {
+            "RS_Camera_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            }
+          }
+        },
+        "Camera_Sensor": {
+          "component_id": "Camera_Sensor",
+          "scheduler_type": "RM",
+          "utilization": 1.0,
+          "alpha": 1.0,
+          "delta": 42.0,
+          "budget": 84,
+          "period": 84,
+          "tasks": {
+            "Task_0": {
+              "avg": 23.0,
+              "max": 23,
+              "min": 23,
+              "median": 23.0,
+              "missed_deadlines": 0,
+              "total_jobs": 2
+            },
+            "Task_1": {
+              "avg": 100.0,
+              "max": 100,
+              "min": 100,
+              "median": 100,
+              "missed_deadlines": 0,
+              "total_jobs": 1
+            }
+          }
+        }
+      }
+    }
+  },
+  "tasks": {
+    "Task_0": {
+      "avg": 23.0,
+      "max": 23,
+      "min": 23,
+      "median": 23.0,
+      "missed_deadlines": 0,
+      "total_jobs": 2
+    },
+    "Task_1": {
+      "avg": 100.0,
+      "max": 100,
+      "min": 100,
+      "median": 100,
+      "missed_deadlines": 0,
+      "total_jobs": 1
+    }
+  }
+}
