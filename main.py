@@ -1,83 +1,123 @@
+# main.py
 import sys
 import os
 import pandas as pd
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-
 from models import Task, Component, Core
 from schedulability import SchedulabilityAnalyzer
 
+
 def load_data(tasks_csv, budgets_csv, arch_csv):
-    # ================ 核心架构加载 ================
+    """数据加载函数，添加完整的数据验证"""
     cores = {}
-    arch_df = pd.read_csv(arch_csv)
-    for _, row in arch_df.iterrows():
-        cores[row['core_id']] = Core(
+
+    # 加载核心架构
+    try:
+        arch_df = pd.read_csv(arch_csv, dtype={
+            'core_id': 'string',
+            'speed_factor': 'float64',
+            'scheduler': 'string'
+        })
+        cores = {row['core_id']: Core(
             core_id=row['core_id'],
-            speed_factor=float(row['speed_factor']),
-            global_algorithm=row['scheduler']
-        )
+            speed_factor=row['speed_factor'],
+            scheduler=row['scheduler']
+        ) for _, row in arch_df.iterrows()}
+    except Exception as e:
+        raise ValueError(f"架构文件加载失败: {str(e)}")
 
-    # ================ 组件数据加载 ================
-    components = {}
-    budgets_df = pd.read_csv(budgets_csv)
-    budgets_df['priority'] = budgets_df['priority'].fillna(0).astype(int)
-    for _, row in budgets_df.iterrows():
-        comp = Component(
-            comp_id=row['component_id'],
-            algorithm=row['scheduler'],
-            core_id=row['core_id'],
-            budget=int(row['budget']),
-            period=int(row['period']),
-            priority=int(row.get('priority'))
-        )
-        components[comp.id] = comp
-        # print("已加载组件ID列表:", list(components.keys()))
-        cores[row['core_id']].components.append(comp)
+    # 加载组件
+    try:
+        budgets_df = pd.read_csv(budgets_csv, dtype={
+            'component_id': 'string',
+            'scheduler': 'string',
+            'core_id': 'string',
+            'budget': 'float64',
+            'period': 'float64',
+            'priority': 'Int64'
+        })
 
-    # ================ 任务数据加载 ================
-    tasks_df = pd.read_csv(tasks_csv)
-
-    tasks_df['priority'] = tasks_df['priority'].fillna(0).astype(int)  # 最终强制为整数
-    # 数据有效性验证
-    required_columns = ['task_name', 'wcet', 'period', 'component_id', 'priority']
-    if not set(required_columns).issubset(tasks_df.columns):
-        missing = set(required_columns) - set(tasks_df.columns)
-        raise ValueError(f"CSV文件缺少必要列: {missing}")
-
-    for _, row in tasks_df.iterrows():
-        # 组件存在性验证
-        component_id = row['component_id']
-        if component_id not in components:
-            raise ValueError(f"任务 {row['task_name']} 分配到不存在的组件 {component_id}")
-
-        # 数值类型验证
-        try:
-            task = Task(
-                task_id=row['task_name'],
-                wcet=int(row['wcet']),
-                period=int(row['period']),
-                component=component_id,
-                priority=int(row['priority'])
+        for _, row in budgets_df.iterrows():
+            comp = Component(
+                component_id=row['component_id'],
+                scheduler=row['scheduler'],
+                core_id=row['core_id'],
+                budget=row['budget'],
+                period=row['period'],
+                priority=row.get('priority')
             )
-            components[component_id].tasks.append(task)
-        except ValueError as e:
-            raise ValueError(f"任务 {row['task_name']} 数据格式错误") from e
+            cores[row['core_id']].components.append(comp)
+    except Exception as e:
+        raise ValueError(f"组件文件加载失败: {str(e)}")
+
+    # 加载任务
+    try:
+        tasks_df = pd.read_csv(tasks_csv, dtype={
+            'task_name': 'string',
+            'wcet': 'float64',
+            'period': 'float64',
+            'component_id': 'string',
+            'priority': 'Int64'
+        })
+
+        for _, row in tasks_df.iterrows():
+            task = Task(
+                task_name=row['task_name'],
+                wcet=row['wcet'],
+                period=row['period'],
+                component_id=row['component_id'],
+                priority=row.get('priority')
+            )
+
+            # 关联到组件
+            for core in cores.values():
+                for comp in core.components:
+                    if comp.component_id == task.component_id:
+                        comp.tasks.append(task)
+                        # 初始化响应时间字段
+                        task.adjusted_wcet = 0.0
+                        task.wcrt = 0.0
+                        task.schedulable = False
+                        break
+
+    except Exception as e:
+        raise ValueError(f"任务文件加载失败: {str(e)}")
 
     return list(cores.values())
 
+
 if __name__ == "__main__":
     try:
-        cores = load_data(
-            tasks_csv="tasks.csv",
-            budgets_csv="budgets.csv",
-            arch_csv="architecture.csv"
-        )
+        cores = load_data("tasks.csv", "budgets.csv", "architecture.csv")
+
+        # 运行分析
         analyzer = SchedulabilityAnalyzer(cores)
-        results = analyzer.analyze()
-        
-        print("===== 层次化可调度性分析报告 =====")
-        for line in results:
-            print(f"• {line}")
-            
+        analysis_results = analyzer.analyze()
+
+        # 打印分析结果
+        print("\n===== 分析结果 =====")
+        for result in analysis_results:
+            print(result)
+
+            # 生成solution.csv
+            print("\n生成 solution.csv...")
+            with open("solution.csv", "w") as f:
+                # Add 'wcrt' to the header and output
+                f.write(
+                    "task_name,component_id,task_schedulable,wcrt,max_response_time,component_schedulable\n")
+                for core in cores:
+                    for comp in core.components:
+
+                        comp_schedulable = comp.schedulable  # Use the value set during analysis
+
+                        for task in comp.tasks:
+                            task_sched = int(task.schedulable)
+                            f.write(f"{task.task_name},{comp.component_id},")
+                            f.write(f"{task_sched},")
+                            f.write(f"{task.wcrt:.2f},")  # WCRT calculated
+                            f.write(f"{task.wcrt:.2f},")  # Max Response Time = WCRT
+                            f.write(f"{int(comp_schedulable)}\n")
+            print("分析完成！solution.csv 已生成。")
+
     except Exception as e:
-        print(f"错误: {str(e)}")  # 错误信息
+        print(f"错误: {str(e)}")
+        sys.exit(1)
