@@ -647,6 +647,66 @@ class HierarchicalScheduler:
             dbf += hp_task.wcet * math.ceil(t / hp_task.period)
             
         return dbf
+    
+    # In the HierarchicalScheduler class, add a method to write results to CSV
+
+    def write_results_to_csv(self, results, output_file):
+        """Write simulation results to CSV in the suggested format."""
+        # Prepare data for CSV
+        csv_data = []
+        
+        # Process each task
+        for task_id, task_stats in results["tasks"].items():
+            # Skip resource supply tasks
+            if task_id.startswith("RS_"):
+                continue
+                
+            task = self.tasks[task_id]
+            component_id = task.component_id
+            
+            # Check if the task is schedulable (no missed deadlines)
+            task_schedulable = 1 if task_stats['missed_deadlines'] == 0 else 0
+            
+            # Add task data to CSV
+            csv_data.append({
+                'task_name': task_id,
+                'component_id': component_id,
+                'task_schedulable': task_schedulable,
+                'avg_response_time': round(task_stats['avg'], 3) if task_stats['avg'] else 0.0,
+                'max_response_time': round(task_stats['max'], 3) if task_stats['max'] else 0.0,
+                'component_schedulable': 1  # This will be updated below
+            })
+        
+        # Update component_schedulable field for each task
+        # A component is schedulable if all its tasks are schedulable
+        component_schedulability = {}
+        
+        for row in csv_data:
+            component_id = row['component_id']
+            if component_id not in component_schedulability:
+                component_schedulability[component_id] = True
+                
+            # If any task is not schedulable, the component is not schedulable
+            if row['task_schedulable'] == 0:
+                component_schedulability[component_id] = False
+        
+        # Update component_schedulable in csv_data
+        for row in csv_data:
+            component_id = row['component_id']
+            row['component_schedulable'] = 1 if component_schedulability[component_id] else 0
+        
+        # Write to CSV
+        import csv
+        with open(output_file, 'w', newline='') as f:
+            fieldnames = ['task_name', 'component_id', 'task_schedulable', 
+                         'avg_response_time', 'max_response_time', 'component_schedulable']
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(csv_data)
+        
+        print(f"Results saved to CSV: {output_file}")
+        
+        return component_schedulability
 
 def load_system_from_files(arch_file, budgets_file, tasks_file):
     """Load system configuration from CSV files."""
@@ -717,6 +777,8 @@ def load_system_from_files(arch_file, budgets_file, tasks_file):
     return scheduler
 
 
+
+# Now modify the main function to use this new method
 
 def main():
     parser = argparse.ArgumentParser(description="Hierarchical Scheduling Simulator")
@@ -793,19 +855,25 @@ def main():
                     if not task_id.startswith("RS_"):  # Skip resource supply tasks
                         print(f"      {task_id}: WCRT={task_stats['max']}, Missed Deadlines={task_stats['missed_deadlines']}/{task_stats['total_jobs']}")
     
+    # Save results to CSV
+    csv_output_file = os.path.join(logs_dir, "solution.csv")
+    component_schedulability = scheduler.write_results_to_csv(results, csv_output_file)
+    
+    # Save results to JSON as well
+    results_file = os.path.join(logs_dir, "simulation_results.json")
+    with open(results_file, "w") as f:
+        json.dump(results, f, indent=2)
+    
+    # Use non-interactive backend and close figures after saving
     plt.switch_backend('Agg')
     # Generate Gantt charts for each core
     for core_id in scheduler.cores:
         output_file = os.path.join(images_dir, f"gantt_core_{core_id}.png")
         scheduler.plot_gantt_chart(core_id, save_path=output_file)
-    
-    # Save results to JSON
-    results_file = os.path.join(logs_dir, "simulation_results.json")
-    with open(results_file, "w") as f:
-        json.dump(results, f, indent=2)
-        
+        plt.close()  # Close figure after saving
     
     print(f"Results saved to {results_file}")
+    print(f"CSV results saved to {csv_output_file}")
     print(f"Gantt charts saved to {images_dir}")
 
 if __name__ == "__main__":
