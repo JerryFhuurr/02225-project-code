@@ -793,6 +793,7 @@ def main():
                     if not task_id.startswith("RS_"):  # Skip resource supply tasks
                         print(f"      {task_id}: WCRT={task_stats['max']}, Missed Deadlines={task_stats['missed_deadlines']}/{task_stats['total_jobs']}")
     
+    plt.switch_backend('Agg')
     # Generate Gantt charts for each core
     for core_id in scheduler.cores:
         output_file = os.path.join(images_dir, f"gantt_core_{core_id}.png")
@@ -802,6 +803,7 @@ def main():
     results_file = os.path.join(logs_dir, "simulation_results.json")
     with open(results_file, "w") as f:
         json.dump(results, f, indent=2)
+        
     
     print(f"Results saved to {results_file}")
     print(f"Gantt charts saved to {images_dir}")

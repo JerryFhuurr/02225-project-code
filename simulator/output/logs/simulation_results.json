@@ -1,19 +1,35 @@
 {
   "cores": {
     "Core_1": {
-      "speed_factor": 0.62,
-      "scheduler_type": "RM",
+      "speed_factor": 1.12,
+      "scheduler_type": "EDF",
       "components": {
         "root_Core_1": {
           "component_id": "root_Core_1",
-          "scheduler_type": "RM",
-          "utilization": 0,
+          "scheduler_type": "EDF",
+          "utilization": 0.0,
           "alpha": null,
           "delta": null,
           "budget": null,
           "period": null,
           "tasks": {
             "RS_Camera_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            },
+            "RS_Image_Processor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            },
+            "RS_Bitmap_Processor": {
               "avg": 0,
               "max": 0,
               "min": 0,
@@ -27,10 +43,10 @@
           "component_id": "Camera_Sensor",
           "scheduler_type": "RM",
           "utilization": 1.0,
-          "alpha": 1.0,
-          "delta": 42.0,
-          "budget": 84,
-          "period": 84,
+          "alpha": 0.4,
+          "delta": 5.0,
+          "budget": 4,
+          "period": 10,
           "tasks": {
             "Task_0": {
               "avg": 23.0,
@@ -38,15 +54,1785 @@
               "min": 23,
               "median": 23.0,
               "missed_deadlines": 0,
-              "total_jobs": 2
+              "total_jobs": 20
             },
             "Task_1": {
-              "avg": 100.0,
-              "max": 100,
-              "min": 100,
-              "median": 100,
+              "avg": 6.0,
+              "max": 8,
+              "min": 4,
+              "median": 6.0,
+              "missed_deadlines": 0,
+              "total_jobs": 40
+            }
+          }
+        },
+        "Image_Processor": {
+          "component_id": "Image_Processor",
+          "scheduler_type": "EDF",
+          "utilization": 1.0,
+          "alpha": 0.18181818181818182,
+          "delta": 5.5,
+          "budget": 2,
+          "period": 11,
+          "tasks": {
+            "Task_2": {
+              "avg": 14.4,
+              "max": 17,
+              "min": 8,
+              "median": 16.0,
+              "missed_deadlines": 0,
+              "total_jobs": 20
+            },
+            "Task_3": {
+              "avg": 3.5,
+              "max": 5,
+              "min": 2,
+              "median": 3.5,
+              "missed_deadlines": 0,
+              "total_jobs": 40
+            }
+          }
+        },
+        "Bitmap_Processor": {
+          "component_id": "Bitmap_Processor",
+          "scheduler_type": "RM",
+          "utilization": 1.0,
+          "alpha": 0.3,
+          "delta": 5.0,
+          "budget": 3,
+          "period": 10,
+          "tasks": {
+            "Task_4": {
+              "avg": 9.925,
+              "max": 15,
+              "min": 9,
+              "median": 9.0,
+              "missed_deadlines": 0,
+              "total_jobs": 40
+            },
+            "Task_5": {
+              "avg": 24.25,
+              "max": 25,
+              "min": 24,
+              "median": 24.0,
+              "missed_deadlines": 0,
+              "total_jobs": 20
+            }
+          }
+        }
+      }
+    },
+    "Core_2": {
+      "speed_factor": 0.75,
+      "scheduler_type": "RM",
+      "components": {
+        "root_Core_2": {
+          "component_id": "root_Core_2",
+          "scheduler_type": "RM",
+          "utilization": 0.0,
+          "alpha": null,
+          "delta": null,
+          "budget": null,
+          "period": null,
+          "tasks": {
+            "RS_Lidar_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            },
+            "RS_Control_Unit": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            }
+          }
+        },
+        "Lidar_Sensor": {
+          "component_id": "Lidar_Sensor",
+          "scheduler_type": "RM",
+          "utilization": 1.0,
+          "alpha": 0.3333333333333333,
+          "delta": 7.5,
+          "budget": 5,
+          "period": 15,
+          "tasks": {
+            "Task_6": {
+              "avg": 6.825,
+              "max": 13,
+              "min": 3,
+              "median": 7.0,
+              "missed_deadlines": 0,
+              "total_jobs": 40
+            },
+            "Task_7": {
+              "avg": 46.5,
+              "max": 66,
+              "min": 23,
+              "median": 46.0,
+              "missed_deadlines": 0,
+              "total_jobs": 10
+            },
+            "Task_8": {
+              "avg": 146.8,
+              "max": 169,
+              "min": 98,
+              "median": 149,
+              "missed_deadlines": 0,
+              "total_jobs": 5
+            },
+            "Task_9": {
+              "avg": 8.5,
+              "max": 15,
+              "min": 5,
+              "median": 7.0,
+              "missed_deadlines": 0,
+              "total_jobs": 20
+            }
+          }
+        },
+        "Control_Unit": {
+          "component_id": "Control_Unit",
+          "scheduler_type": "EDF",
+          "utilization": 1.0,
+          "alpha": 0.36363636363636365,
+          "delta": 5.5,
+          "budget": 4,
+          "period": 11,
+          "tasks": {
+            "Task_10": {
+              "avg": 5.05,
+              "max": 12,
+              "min": 2,
+              "median": 5.0,
+              "missed_deadlines": 0,
+              "total_jobs": 40
+            },
+            "Task_11": {
+              "avg": 15.642857142857142,
+              "max": 24,
+              "min": 8,
+              "median": 14.5,
+              "missed_deadlines": 0,
+              "total_jobs": 14
+            },
+            "Task_12": {
+              "avg": 11.65,
+              "max": 21,
+              "min": 5,
+              "median": 11.0,
+              "missed_deadlines": 0,
+              "total_jobs": 20
+            },
+            "Task_13": {
+              "avg": 22.9,
+              "max": 39,
+              "min": 10,
+              "median": 21.5,
+              "missed_deadlines": 0,
+              "total_jobs": 10
+            },
+            "Task_14": {
+              "avg": 44.0,
+              "max": 68,
+              "min": 22,
+              "median": 39,
+              "missed_deadlines": 0,
+              "total_jobs": 5
+            },
+            "Task_15": {
+              "avg": 37.0,
+              "max": 42,
+              "min": 23,
+              "median": 39,
+              "missed_deadlines": 0,
+              "total_jobs": 7
+            }
+          }
+        }
+      }
+    },
+    "Core_3": {
+      "speed_factor": 1.19,
+      "scheduler_type": "RM",
+      "components": {
+        "root_Core_3": {
+          "component_id": "root_Core_3",
+          "scheduler_type": "RM",
+          "utilization": 0.0,
+          "alpha": null,
+          "delta": null,
+          "budget": null,
+          "period": null,
+          "tasks": {
+            "RS_GPS_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            },
+            "RS_Communication_Unit": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            },
+            "RS_Proximity_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            }
+          }
+        },
+        "GPS_Sensor": {
+          "component_id": "GPS_Sensor",
+          "scheduler_type": "RM",
+          "utilization": 1.0,
+          "alpha": 0.15384615384615385,
+          "delta": 6.5,
+          "budget": 2,
+          "period": 13,
+          "tasks": {
+            "Task_16": {
+              "avg": 9.9,
+              "max": 15,
+              "min": 4,
+              "median": 10.0,
+              "missed_deadlines": 0,
+              "total_jobs": 20
+            },
+            "Task_17": {
+              "avg": 1.05,
+              "max": 2,
+              "min": 1,
+              "median": 1.0,
+              "missed_deadlines": 0,
+              "total_jobs": 40
+            }
+          }
+        },
+        "Communication_Unit": {
+          "component_id": "Communication_Unit",
+          "scheduler_type": "RM",
+          "utilization": 1.0,
+          "alpha": 0.23076923076923078,
+          "delta": 6.5,
+          "budget": 3,
+          "period": 13,
+          "tasks": {
+            "Task_18": {
+              "avg": 2.625,
+              "max": 5,
+              "min": 1,
+              "median": 3.0,
+              "missed_deadlines": 0,
+              "total_jobs": 40
+            },
+            "Task_19": {
+              "avg": 4.35,
+              "max": 6,
+              "min": 4,
+              "median": 4.0,
+              "missed_deadlines": 0,
+              "total_jobs": 20
+            },
+            "Task_20": {
+              "avg": 12.0,
+              "max": 16,
+              "min": 8,
+              "median": 12.0,
+              "missed_deadlines": 0,
+              "total_jobs": 10
+            },
+            "Task_21": {
+              "avg": 19.142857142857142,
+              "max": 29,
+              "min": 9,
+              "median": 24,
+              "missed_deadlines": 0,
+              "total_jobs": 7
+            }
+          }
+        },
+        "Proximity_Sensor": {
+          "component_id": "Proximity_Sensor",
+          "scheduler_type": "EDF",
+          "utilization": 1.0,
+          "alpha": 0.2,
+          "delta": 2.5,
+          "budget": 1,
+          "period": 5,
+          "tasks": {
+            "Task_22": {
+              "avg": 31.5,
+              "max": 36,
+              "min": 31,
+              "median": 31.0,
+              "missed_deadlines": 0,
+              "total_jobs": 10
+            },
+            "Task_23": {
+              "avg": 2.22,
+              "max": 9,
+              "min": 1,
+              "median": 1.0,
+              "missed_deadlines": 0,
+              "total_jobs": 50
+            },
+            "Task_24": {
+              "avg": 9.0,
+              "max": 16,
+              "min": 5,
+              "median": 10.5,
+              "missed_deadlines": 0,
+              "total_jobs": 20
+            }
+          }
+        }
+      }
+    },
+    "Core_4": {
+      "speed_factor": 1.38,
+      "scheduler_type": "EDF",
+      "components": {
+        "root_Core_4": {
+          "component_id": "root_Core_4",
+          "scheduler_type": "EDF",
+          "utilization": 0.0,
+          "alpha": null,
+          "delta": null,
+          "budget": null,
+          "period": null,
+          "tasks": {
+            "RS_Radar_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            },
+            "RS_Sonar_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            }
+          }
+        },
+        "Radar_Sensor": {
+          "component_id": "Radar_Sensor",
+          "scheduler_type": "EDF",
+          "utilization": 1.0,
+          "alpha": 0.6,
+          "delta": 2.5,
+          "budget": 3,
+          "period": 5,
+          "tasks": {
+            "Task_25": {
+              "avg": 1.0,
+              "max": 1,
+              "min": 1,
+              "median": 1.0,
+              "missed_deadlines": 0,
+              "total_jobs": 200
+            },
+            "Task_26": {
+              "avg": 40.0,
+              "max": 48,
+              "min": 32,
+              "median": 40.0,
+              "missed_deadlines": 0,
+              "total_jobs": 10
+            },
+            "Task_27": {
+              "avg": 117.0,
+              "max": 117,
+              "min": 117,
+              "median": 117,
+              "missed_deadlines": 0,
+              "total_jobs": 5
+            }
+          }
+        },
+        "Sonar_Sensor": {
+          "component_id": "Sonar_Sensor",
+          "scheduler_type": "RM",
+          "utilization": 1.0,
+          "alpha": 0.2631578947368421,
+          "delta": 9.5,
+          "budget": 5,
+          "period": 19,
+          "tasks": {
+            "Task_28": {
+              "avg": 20.4,
+              "max": 25,
+              "min": 15,
+              "median": 19.5,
+              "missed_deadlines": 0,
+              "total_jobs": 20
+            },
+            "Task_29": {
+              "avg": 43.3,
+              "max": 49,
+              "min": 39,
+              "median": 44.0,
+              "missed_deadlines": 0,
+              "total_jobs": 10
+            }
+          }
+        }
+      }
+    },
+    "Core_5": {
+      "speed_factor": 0.93,
+      "scheduler_type": "EDF",
+      "components": {
+        "root_Core_5": {
+          "component_id": "root_Core_5",
+          "scheduler_type": "EDF",
+          "utilization": 0.0,
+          "alpha": null,
+          "delta": null,
+          "budget": null,
+          "period": null,
+          "tasks": {
+            "RS_Laser_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            },
+            "RS_Infrared_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            }
+          }
+        },
+        "Laser_Sensor": {
+          "component_id": "Laser_Sensor",
+          "scheduler_type": "RM",
+          "utilization": 1.0,
+          "alpha": 0.4444444444444444,
+          "delta": 4.5,
+          "budget": 4,
+          "period": 9,
+          "tasks": {
+            "Task_30": {
+              "avg": 82.0,
+              "max": 84,
+              "min": 79,
+              "median": 82.5,
+              "missed_deadlines": 0,
+              "total_jobs": 10
+            },
+            "Task_31": {
+              "avg": 3.775,
+              "max": 7,
+              "min": 2,
+              "median": 3.0,
+              "missed_deadlines": 0,
+              "total_jobs": 40
+            },
+            "Task_32": {
+              "avg": 22.0,
+              "max": 33,
+              "min": 16,
+              "median": 21.0,
+              "missed_deadlines": 0,
+              "total_jobs": 20
+            },
+            "Task_33": {
+              "avg": 90.0,
+              "max": 92,
+              "min": 87,
+              "median": 90.5,
+              "missed_deadlines": 0,
+              "total_jobs": 4
+            }
+          }
+        },
+        "Infrared_Sensor": {
+          "component_id": "Infrared_Sensor",
+          "scheduler_type": "RM",
+          "utilization": 1.0,
+          "alpha": 0.3333333333333333,
+          "delta": 3.0,
+          "budget": 2,
+          "period": 6,
+          "tasks": {
+            "Task_34": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            },
+            "Task_35": {
+              "avg": 30.95,
+              "max": 39,
+              "min": 21,
+              "median": 31.5,
+              "missed_deadlines": 0,
+              "total_jobs": 20
+            },
+            "Task_36": {
+              "avg": 5.36,
+              "max": 10,
+              "min": 2,
+              "median": 6.0,
+              "missed_deadlines": 0,
+              "total_jobs": 50
+            }
+          }
+        }
+      }
+    },
+    "Core_6": {
+      "speed_factor": 0.68,
+      "scheduler_type": "EDF",
+      "components": {
+        "root_Core_6": {
+          "component_id": "root_Core_6",
+          "scheduler_type": "EDF",
+          "utilization": 0.0,
+          "alpha": null,
+          "delta": null,
+          "budget": null,
+          "period": null,
+          "tasks": {
+            "RS_Ultraviolet_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            },
+            "RS_Thermal_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            }
+          }
+        },
+        "Ultraviolet_Sensor": {
+          "component_id": "Ultraviolet_Sensor",
+          "scheduler_type": "EDF",
+          "utilization": 1.0,
+          "alpha": 0.25,
+          "delta": 6.0,
+          "budget": 3,
+          "period": 12,
+          "tasks": {
+            "Task_37": {
+              "avg": 29.333333333333332,
+              "max": 49,
+              "min": 15,
+              "median": 23,
+              "missed_deadlines": 0,
+              "total_jobs": 9
+            },
+            "Task_38": {
+              "avg": 105.5,
+              "max": 138,
+              "min": 71,
+              "median": 106.5,
+              "missed_deadlines": 0,
+              "total_jobs": 4
+            },
+            "Task_39": {
+              "avg": 157.66666666666666,
+              "max": 231,
+              "min": 97,
+              "median": 145,
+              "missed_deadlines": 0,
+              "total_jobs": 3
+            },
+            "Task_40": {
+              "avg": 16.57894736842105,
+              "max": 29,
+              "min": 13,
+              "median": 15,
+              "missed_deadlines": 0,
+              "total_jobs": 19
+            },
+            "Task_41": {
+              "avg": 330.5,
+              "max": 394,
+              "min": 267,
+              "median": 330.5,
+              "missed_deadlines": 0,
+              "total_jobs": 2
+            },
+            "Task_42": {
+              "avg": 759.0,
+              "max": 759,
+              "min": 759,
+              "median": 759,
               "missed_deadlines": 0,
               "total_jobs": 1
+            },
+            "Task_43": {
+              "avg": 6.794871794871795,
+              "max": 15,
+              "min": 2,
+              "median": 7,
+              "missed_deadlines": 0,
+              "total_jobs": 39
+            },
+            "Task_44": {
+              "avg": 73.14285714285714,
+              "max": 127,
+              "min": 45,
+              "median": 69,
+              "missed_deadlines": 0,
+              "total_jobs": 7
+            }
+          }
+        },
+        "Thermal_Sensor": {
+          "component_id": "Thermal_Sensor",
+          "scheduler_type": "EDF",
+          "utilization": 1.0,
+          "alpha": 0.5,
+          "delta": 1.0,
+          "budget": 1,
+          "period": 2,
+          "tasks": {
+            "Task_45": {
+              "avg": 98.2,
+              "max": 99,
+              "min": 97,
+              "median": 99,
+              "missed_deadlines": 0,
+              "total_jobs": 5
+            },
+            "Task_46": {
+              "avg": 3.517543859649123,
+              "max": 5,
+              "min": 2,
+              "median": 3.0,
+              "missed_deadlines": 0,
+              "total_jobs": 114
+            },
+            "Task_47": {
+              "avg": 48.23076923076923,
+              "max": 50,
+              "min": 45,
+              "median": 49,
+              "missed_deadlines": 0,
+              "total_jobs": 13
+            },
+            "Task_48": {
+              "avg": 18.25,
+              "max": 19,
+              "min": 17,
+              "median": 19.0,
+              "missed_deadlines": 0,
+              "total_jobs": 24
+            }
+          }
+        }
+      }
+    },
+    "Core_7": {
+      "speed_factor": 0.96,
+      "scheduler_type": "EDF",
+      "components": {
+        "root_Core_7": {
+          "component_id": "root_Core_7",
+          "scheduler_type": "EDF",
+          "utilization": 0.0,
+          "alpha": null,
+          "delta": null,
+          "budget": null,
+          "period": null,
+          "tasks": {
+            "RS_Pressure_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            },
+            "RS_Humidity_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            }
+          }
+        },
+        "Pressure_Sensor": {
+          "component_id": "Pressure_Sensor",
+          "scheduler_type": "RM",
+          "utilization": 1.0,
+          "alpha": 0.125,
+          "delta": 4.0,
+          "budget": 1,
+          "period": 8,
+          "tasks": {
+            "Task_49": {
+              "avg": 12.5,
+              "max": 16,
+              "min": 9,
+              "median": 12.5,
+              "missed_deadlines": 0,
+              "total_jobs": 40
+            },
+            "Task_50": {
+              "avg": 40.0,
+              "max": 47,
+              "min": 25,
+              "median": 44.0,
+              "missed_deadlines": 0,
+              "total_jobs": 20
+            },
+            "Task_51": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            }
+          }
+        },
+        "Humidity_Sensor": {
+          "component_id": "Humidity_Sensor",
+          "scheduler_type": "RM",
+          "utilization": 1.0,
+          "alpha": 0.6666666666666666,
+          "delta": 1.5,
+          "budget": 2,
+          "period": 3,
+          "tasks": {
+            "Task_52": {
+              "avg": 2.832,
+              "max": 3,
+              "min": 2,
+              "median": 3.0,
+              "missed_deadlines": 0,
+              "total_jobs": 250
+            },
+            "Task_53": {
+              "avg": 8.0,
+              "max": 8,
+              "min": 8,
+              "median": 8.0,
+              "missed_deadlines": 0,
+              "total_jobs": 42
+            }
+          }
+        }
+      }
+    },
+    "Core_8": {
+      "speed_factor": 1.19,
+      "scheduler_type": "EDF",
+      "components": {
+        "root_Core_8": {
+          "component_id": "root_Core_8",
+          "scheduler_type": "EDF",
+          "utilization": 0.0,
+          "alpha": null,
+          "delta": null,
+          "budget": null,
+          "period": null,
+          "tasks": {
+            "RS_Temperature_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            },
+            "RS_Light_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            }
+          }
+        },
+        "Temperature_Sensor": {
+          "component_id": "Temperature_Sensor",
+          "scheduler_type": "EDF",
+          "utilization": 1.0,
+          "alpha": 0.625,
+          "delta": 16.0,
+          "budget": 20,
+          "period": 32,
+          "tasks": {
+            "Task_54": {
+              "avg": 41.3,
+              "max": 69,
+              "min": 24,
+              "median": 34.0,
+              "missed_deadlines": 0,
+              "total_jobs": 10
+            },
+            "Task_55": {
+              "avg": 3.225,
+              "max": 13,
+              "min": 1,
+              "median": 1.0,
+              "missed_deadlines": 0,
+              "total_jobs": 40
+            },
+            "Task_56": {
+              "avg": 232.66666666666666,
+              "max": 237,
+              "min": 224,
+              "median": 237,
+              "missed_deadlines": 0,
+              "total_jobs": 3
+            },
+            "Task_57": {
+              "avg": 18.428571428571427,
+              "max": 50,
+              "min": 7,
+              "median": 11.5,
+              "missed_deadlines": 0,
+              "total_jobs": 14
+            }
+          }
+        },
+        "Light_Sensor": {
+          "component_id": "Light_Sensor",
+          "scheduler_type": "RM",
+          "utilization": 1.0,
+          "alpha": 0.21739130434782608,
+          "delta": 11.5,
+          "budget": 5,
+          "period": 23,
+          "tasks": {
+            "Task_58": {
+              "avg": 14.0,
+              "max": 41,
+              "min": 1,
+              "median": 13.5,
+              "missed_deadlines": 0,
+              "total_jobs": 20
+            },
+            "Task_59": {
+              "avg": 42.8,
+              "max": 64,
+              "min": 9,
+              "median": 47.5,
+              "missed_deadlines": 0,
+              "total_jobs": 10
+            },
+            "Task_60": {
+              "avg": 300.0,
+              "max": 300,
+              "min": 300,
+              "median": 300,
+              "missed_deadlines": 0,
+              "total_jobs": 3
+            }
+          }
+        }
+      }
+    },
+    "Core_9": {
+      "speed_factor": 0.62,
+      "scheduler_type": "RM",
+      "components": {
+        "root_Core_9": {
+          "component_id": "root_Core_9",
+          "scheduler_type": "RM",
+          "utilization": 0.0,
+          "alpha": null,
+          "delta": null,
+          "budget": null,
+          "period": null,
+          "tasks": {
+            "RS_Sound_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            },
+            "RS_Vibration_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            }
+          }
+        },
+        "Sound_Sensor": {
+          "component_id": "Sound_Sensor",
+          "scheduler_type": "RM",
+          "utilization": 1.0,
+          "alpha": 0.3783783783783784,
+          "delta": 18.5,
+          "budget": 14,
+          "period": 37,
+          "tasks": {
+            "Task_61": {
+              "avg": 41.3,
+              "max": 53,
+              "min": 26,
+              "median": 43.0,
+              "missed_deadlines": 0,
+              "total_jobs": 10
+            },
+            "Task_62": {
+              "avg": 75.0,
+              "max": 81,
+              "min": 69,
+              "median": 75.0,
+              "missed_deadlines": 0,
+              "total_jobs": 4
+            }
+          }
+        },
+        "Vibration_Sensor": {
+          "component_id": "Vibration_Sensor",
+          "scheduler_type": "EDF",
+          "utilization": 1.0,
+          "alpha": 0.125,
+          "delta": 4.0,
+          "budget": 1,
+          "period": 8,
+          "tasks": {
+            "Task_63": {
+              "avg": 15.9,
+              "max": 25,
+              "min": 4,
+              "median": 17.0,
+              "missed_deadlines": 0,
+              "total_jobs": 30
+            },
+            "Task_64": {
+              "avg": 35.05263157894737,
+              "max": 49,
+              "min": 23,
+              "median": 31,
+              "missed_deadlines": 0,
+              "total_jobs": 19
+            }
+          }
+        }
+      }
+    },
+    "Core_10": {
+      "speed_factor": 1.46,
+      "scheduler_type": "EDF",
+      "components": {
+        "root_Core_10": {
+          "component_id": "root_Core_10",
+          "scheduler_type": "EDF",
+          "utilization": 0.0,
+          "alpha": null,
+          "delta": null,
+          "budget": null,
+          "period": null,
+          "tasks": {
+            "RS_Motion_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            },
+            "RS_Acceleration_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            }
+          }
+        },
+        "Motion_Sensor": {
+          "component_id": "Motion_Sensor",
+          "scheduler_type": "RM",
+          "utilization": 1.0,
+          "alpha": 0.2786885245901639,
+          "delta": 30.5,
+          "budget": 17,
+          "period": 61,
+          "tasks": {
+            "Task_65": {
+              "avg": 15.1,
+              "max": 39,
+              "min": 7,
+              "median": 7.0,
+              "missed_deadlines": 0,
+              "total_jobs": 10
+            },
+            "Task_66": {
+              "avg": 139.25,
+              "max": 185,
+              "min": 90,
+              "median": 141.0,
+              "missed_deadlines": 0,
+              "total_jobs": 4
+            }
+          }
+        },
+        "Acceleration_Sensor": {
+          "component_id": "Acceleration_Sensor",
+          "scheduler_type": "RM",
+          "utilization": 1.0,
+          "alpha": 0.3125,
+          "delta": 8.0,
+          "budget": 5,
+          "period": 16,
+          "tasks": {
+            "Task_67": {
+              "avg": 7.394736842105263,
+              "max": 23,
+              "min": 1,
+              "median": 7.0,
+              "missed_deadlines": 0,
+              "total_jobs": 38
+            },
+            "Task_68": {
+              "avg": 16.214285714285715,
+              "max": 36,
+              "min": 4,
+              "median": 14.5,
+              "missed_deadlines": 0,
+              "total_jobs": 14
+            },
+            "Task_69": {
+              "avg": 43.6,
+              "max": 64,
+              "min": 21,
+              "median": 45.5,
+              "missed_deadlines": 0,
+              "total_jobs": 10
+            },
+            "Task_70": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            }
+          }
+        }
+      }
+    },
+    "Core_11": {
+      "speed_factor": 1.05,
+      "scheduler_type": "EDF",
+      "components": {
+        "root_Core_11": {
+          "component_id": "root_Core_11",
+          "scheduler_type": "EDF",
+          "utilization": 0.0,
+          "alpha": null,
+          "delta": null,
+          "budget": null,
+          "period": null,
+          "tasks": {
+            "RS_Gyroscope_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            },
+            "RS_Magnetometer_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            }
+          }
+        },
+        "Gyroscope_Sensor": {
+          "component_id": "Gyroscope_Sensor",
+          "scheduler_type": "EDF",
+          "utilization": 1.0,
+          "alpha": 0.3333333333333333,
+          "delta": 4.5,
+          "budget": 3,
+          "period": 9,
+          "tasks": {
+            "Task_71": {
+              "avg": 9.9,
+              "max": 12,
+              "min": 6,
+              "median": 10.5,
+              "missed_deadlines": 0,
+              "total_jobs": 10
+            },
+            "Task_72": {
+              "avg": 3.25,
+              "max": 8,
+              "min": 2,
+              "median": 3.0,
+              "missed_deadlines": 0,
+              "total_jobs": 20
+            },
+            "Task_73": {
+              "avg": 1.95,
+              "max": 7,
+              "min": 1,
+              "median": 1.0,
+              "missed_deadlines": 0,
+              "total_jobs": 40
+            },
+            "Task_74": {
+              "avg": 59.25,
+              "max": 75,
+              "min": 45,
+              "median": 58.5,
+              "missed_deadlines": 0,
+              "total_jobs": 4
+            },
+            "Task_75": {
+              "avg": 35.6,
+              "max": 38,
+              "min": 32,
+              "median": 36,
+              "missed_deadlines": 0,
+              "total_jobs": 5
+            },
+            "Task_76": {
+              "avg": 1.72,
+              "max": 7,
+              "min": 1,
+              "median": 1.0,
+              "missed_deadlines": 0,
+              "total_jobs": 50
+            }
+          }
+        },
+        "Magnetometer_Sensor": {
+          "component_id": "Magnetometer_Sensor",
+          "scheduler_type": "RM",
+          "utilization": 1.0,
+          "alpha": 0.14285714285714285,
+          "delta": 3.5,
+          "budget": 1,
+          "period": 7,
+          "tasks": {
+            "Task_77": {
+              "avg": 3.02,
+              "max": 8,
+              "min": 1,
+              "median": 2.0,
+              "missed_deadlines": 0,
+              "total_jobs": 50
+            },
+            "Task_78": {
+              "avg": 25.294117647058822,
+              "max": 34,
+              "min": 17,
+              "median": 28,
+              "missed_deadlines": 0,
+              "total_jobs": 17
+            }
+          }
+        }
+      }
+    },
+    "Core_12": {
+      "speed_factor": 0.51,
+      "scheduler_type": "EDF",
+      "components": {
+        "root_Core_12": {
+          "component_id": "root_Core_12",
+          "scheduler_type": "EDF",
+          "utilization": 0.0,
+          "alpha": null,
+          "delta": null,
+          "budget": null,
+          "period": null,
+          "tasks": {
+            "RS_Compass_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            },
+            "RS_Altimeter_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            }
+          }
+        },
+        "Compass_Sensor": {
+          "component_id": "Compass_Sensor",
+          "scheduler_type": "RM",
+          "utilization": 1.0,
+          "alpha": 0.16666666666666666,
+          "delta": 6.0,
+          "budget": 2,
+          "period": 12,
+          "tasks": {
+            "Task_79": {
+              "avg": 16.0,
+              "max": 24,
+              "min": 6,
+              "median": 16.0,
+              "missed_deadlines": 0,
+              "total_jobs": 20
+            },
+            "Task_80": {
+              "avg": 34.4,
+              "max": 46,
+              "min": 18,
+              "median": 38.0,
+              "missed_deadlines": 0,
+              "total_jobs": 10
+            },
+            "Task_81": {
+              "avg": 6.25,
+              "max": 12,
+              "min": 2,
+              "median": 5.5,
+              "missed_deadlines": 0,
+              "total_jobs": 40
+            },
+            "Task_82": {
+              "avg": 94.0,
+              "max": 98,
+              "min": 90,
+              "median": 94,
+              "missed_deadlines": 0,
+              "total_jobs": 5
+            }
+          }
+        },
+        "Altimeter_Sensor": {
+          "component_id": "Altimeter_Sensor",
+          "scheduler_type": "EDF",
+          "utilization": 1.0,
+          "alpha": 0.1111111111111111,
+          "delta": 4.5,
+          "budget": 1,
+          "period": 9,
+          "tasks": {
+            "Task_83": {
+              "avg": 13.837837837837839,
+              "max": 19,
+              "min": 8,
+              "median": 14,
+              "missed_deadlines": 0,
+              "total_jobs": 37
+            },
+            "Task_84": {
+              "avg": 60.0,
+              "max": 72,
+              "min": 46,
+              "median": 67,
+              "missed_deadlines": 0,
+              "total_jobs": 7
+            },
+            "Task_85": {
+              "avg": 298.0,
+              "max": 298,
+              "min": 298,
+              "median": 298,
+              "missed_deadlines": 0,
+              "total_jobs": 1
+            }
+          }
+        }
+      }
+    },
+    "Core_13": {
+      "speed_factor": 1.25,
+      "scheduler_type": "RM",
+      "components": {
+        "root_Core_13": {
+          "component_id": "root_Core_13",
+          "scheduler_type": "RM",
+          "utilization": 0.0,
+          "alpha": null,
+          "delta": null,
+          "budget": null,
+          "period": null,
+          "tasks": {
+            "RS_Barometer_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            },
+            "RS_Hygrometer_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            }
+          }
+        },
+        "Barometer_Sensor": {
+          "component_id": "Barometer_Sensor",
+          "scheduler_type": "EDF",
+          "utilization": 1.0,
+          "alpha": 0.5555555555555556,
+          "delta": 4.5,
+          "budget": 5,
+          "period": 9,
+          "tasks": {
+            "Task_86": {
+              "avg": 11.1,
+              "max": 15,
+              "min": 7,
+              "median": 11.0,
+              "missed_deadlines": 0,
+              "total_jobs": 50
+            },
+            "Task_87": {
+              "avg": 13.55,
+              "max": 25,
+              "min": 8,
+              "median": 10.5,
+              "missed_deadlines": 0,
+              "total_jobs": 20
+            },
+            "Task_88": {
+              "avg": 58.0,
+              "max": 59,
+              "min": 55,
+              "median": 59.0,
+              "missed_deadlines": 0,
+              "total_jobs": 10
+            }
+          }
+        },
+        "Hygrometer_Sensor": {
+          "component_id": "Hygrometer_Sensor",
+          "scheduler_type": "RM",
+          "utilization": 1.0,
+          "alpha": 0.2608695652173913,
+          "delta": 11.5,
+          "budget": 6,
+          "period": 23,
+          "tasks": {
+            "Task_89": {
+              "avg": 5.35,
+              "max": 13,
+              "min": 1,
+              "median": 6.0,
+              "missed_deadlines": 0,
+              "total_jobs": 20
+            },
+            "Task_90": {
+              "avg": 97.42857142857143,
+              "max": 106,
+              "min": 90,
+              "median": 96,
+              "missed_deadlines": 0,
+              "total_jobs": 7
+            }
+          }
+        }
+      }
+    },
+    "Core_14": {
+      "speed_factor": 0.73,
+      "scheduler_type": "EDF",
+      "components": {
+        "root_Core_14": {
+          "component_id": "root_Core_14",
+          "scheduler_type": "EDF",
+          "utilization": 0.0,
+          "alpha": null,
+          "delta": null,
+          "budget": null,
+          "period": null,
+          "tasks": {
+            "RS_Anemometer_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            },
+            "RS_Rain_Gauge_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            }
+          }
+        },
+        "Anemometer_Sensor": {
+          "component_id": "Anemometer_Sensor",
+          "scheduler_type": "RM",
+          "utilization": 1.0,
+          "alpha": 0.5,
+          "delta": 1.0,
+          "budget": 1,
+          "period": 2,
+          "tasks": {
+            "Task_91": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            },
+            "Task_92": {
+              "avg": 25.0,
+              "max": 25,
+              "min": 25,
+              "median": 25.0,
+              "missed_deadlines": 0,
+              "total_jobs": 20
+            },
+            "Task_93": {
+              "avg": 3.5,
+              "max": 4,
+              "min": 3,
+              "median": 3.5,
+              "missed_deadlines": 0,
+              "total_jobs": 200
+            },
+            "Task_94": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            }
+          }
+        },
+        "Rain_Gauge_Sensor": {
+          "component_id": "Rain_Gauge_Sensor",
+          "scheduler_type": "RM",
+          "utilization": 1.0,
+          "alpha": 0.5,
+          "delta": 8.0,
+          "budget": 8,
+          "period": 16,
+          "tasks": {
+            "Task_95": {
+              "avg": 5.5,
+              "max": 6,
+              "min": 5,
+              "median": 5.5,
+              "missed_deadlines": 0,
+              "total_jobs": 40
+            },
+            "Task_96": {
+              "avg": 24.0,
+              "max": 24,
+              "min": 24,
+              "median": 24.0,
+              "missed_deadlines": 0,
+              "total_jobs": 10
+            },
+            "Task_97": {
+              "avg": 96.0,
+              "max": 96,
+              "min": 96,
+              "median": 96.0,
+              "missed_deadlines": 0,
+              "total_jobs": 4
+            }
+          }
+        }
+      }
+    },
+    "Core_15": {
+      "speed_factor": 0.62,
+      "scheduler_type": "RM",
+      "components": {
+        "root_Core_15": {
+          "component_id": "root_Core_15",
+          "scheduler_type": "RM",
+          "utilization": 0.0,
+          "alpha": null,
+          "delta": null,
+          "budget": null,
+          "period": null,
+          "tasks": {
+            "RS_Snow_Gauge_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            },
+            "RS_Thermometer_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            }
+          }
+        },
+        "Snow_Gauge_Sensor": {
+          "component_id": "Snow_Gauge_Sensor",
+          "scheduler_type": "EDF",
+          "utilization": 1.0,
+          "alpha": 0.23076923076923078,
+          "delta": 6.5,
+          "budget": 3,
+          "period": 13,
+          "tasks": {
+            "Task_98": {
+              "avg": 18.3,
+              "max": 24,
+              "min": 14,
+              "median": 18.0,
+              "missed_deadlines": 0,
+              "total_jobs": 20
+            },
+            "Task_99": {
+              "avg": 28.5,
+              "max": 62,
+              "min": 16,
+              "median": 23.0,
+              "missed_deadlines": 0,
+              "total_jobs": 10
+            },
+            "Task_100": {
+              "avg": 179.33333333333334,
+              "max": 197,
+              "min": 146,
+              "median": 195,
+              "missed_deadlines": 0,
+              "total_jobs": 3
+            },
+            "Task_101": {
+              "avg": 432.0,
+              "max": 432,
+              "min": 432,
+              "median": 432,
+              "missed_deadlines": 0,
+              "total_jobs": 1
+            },
+            "Task_102": {
+              "avg": 93.6,
+              "max": 148,
+              "min": 67,
+              "median": 88,
+              "missed_deadlines": 0,
+              "total_jobs": 5
+            },
+            "Task_103": {
+              "avg": 6.875,
+              "max": 12,
+              "min": 2,
+              "median": 7.0,
+              "missed_deadlines": 0,
+              "total_jobs": 40
+            },
+            "Task_104": {
+              "avg": 990.0,
+              "max": 990,
+              "min": 990,
+              "median": 990,
+              "missed_deadlines": 0,
+              "total_jobs": 1
+            },
+            "Task_105": {
+              "avg": 251.0,
+              "max": 265,
+              "min": 237,
+              "median": 251.0,
+              "missed_deadlines": 0,
+              "total_jobs": 2
+            }
+          }
+        },
+        "Thermometer_Sensor": {
+          "component_id": "Thermometer_Sensor",
+          "scheduler_type": "EDF",
+          "utilization": 1.0,
+          "alpha": 0.5,
+          "delta": 6.0,
+          "budget": 6,
+          "period": 12,
+          "tasks": {
+            "Task_106": {
+              "avg": 19.1,
+              "max": 21,
+              "min": 17,
+              "median": 19.5,
+              "missed_deadlines": 0,
+              "total_jobs": 10
+            },
+            "Task_107": {
+              "avg": 2.75,
+              "max": 5,
+              "min": 2,
+              "median": 2.0,
+              "missed_deadlines": 0,
+              "total_jobs": 40
+            },
+            "Task_108": {
+              "avg": 98.0,
+              "max": 98,
+              "min": 98,
+              "median": 98.0,
+              "missed_deadlines": 0,
+              "total_jobs": 4
+            },
+            "Task_109": {
+              "avg": 14.65,
+              "max": 18,
+              "min": 12,
+              "median": 15.0,
+              "missed_deadlines": 0,
+              "total_jobs": 20
+            }
+          }
+        }
+      }
+    },
+    "Core_16": {
+      "speed_factor": 0.99,
+      "scheduler_type": "EDF",
+      "components": {
+        "root_Core_16": {
+          "component_id": "root_Core_16",
+          "scheduler_type": "EDF",
+          "utilization": 0.0,
+          "alpha": null,
+          "delta": null,
+          "budget": null,
+          "period": null,
+          "tasks": {
+            "RS_Pyrometer_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            },
+            "RS_Photometer_Sensor": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            }
+          }
+        },
+        "Pyrometer_Sensor": {
+          "component_id": "Pyrometer_Sensor",
+          "scheduler_type": "RM",
+          "utilization": 1.0,
+          "alpha": 0.1111111111111111,
+          "delta": 4.5,
+          "budget": 1,
+          "period": 9,
+          "tasks": {
+            "Task_110": {
+              "avg": 13.9,
+              "max": 18,
+              "min": 10,
+              "median": 14.0,
+              "missed_deadlines": 0,
+              "total_jobs": 40
+            },
+            "Task_111": {
+              "avg": 48.0,
+              "max": 50,
+              "min": 46,
+              "median": 48.0,
+              "missed_deadlines": 0,
+              "total_jobs": 12
+            },
+            "Task_112": {
+              "avg": 0,
+              "max": 0,
+              "min": 0,
+              "median": 0,
+              "missed_deadlines": 0,
+              "total_jobs": 0
+            }
+          }
+        },
+        "Photometer_Sensor": {
+          "component_id": "Photometer_Sensor",
+          "scheduler_type": "RM",
+          "utilization": 1.0,
+          "alpha": 0.6,
+          "delta": 7.5,
+          "budget": 9,
+          "period": 15,
+          "tasks": {
+            "Task_113": {
+              "avg": 22.15,
+              "max": 25,
+              "min": 19,
+              "median": 23.0,
+              "missed_deadlines": 0,
+              "total_jobs": 20
+            },
+            "Task_114": {
+              "avg": 10.2,
+              "max": 13,
+              "min": 8,
+              "median": 9.0,
+              "missed_deadlines": 0,
+              "total_jobs": 40
             }
           }
         }
@@ -60,15 +1846,919 @@
       "min": 23,
       "median": 23.0,
       "missed_deadlines": 0,
-      "total_jobs": 2
+      "total_jobs": 20
     },
     "Task_1": {
-      "avg": 100.0,
-      "max": 100,
-      "min": 100,
-      "median": 100,
+      "avg": 6.0,
+      "max": 8,
+      "min": 4,
+      "median": 6.0,
+      "missed_deadlines": 0,
+      "total_jobs": 40
+    },
+    "Task_2": {
+      "avg": 14.4,
+      "max": 17,
+      "min": 8,
+      "median": 16.0,
+      "missed_deadlines": 0,
+      "total_jobs": 20
+    },
+    "Task_3": {
+      "avg": 3.5,
+      "max": 5,
+      "min": 2,
+      "median": 3.5,
+      "missed_deadlines": 0,
+      "total_jobs": 40
+    },
+    "Task_4": {
+      "avg": 9.925,
+      "max": 15,
+      "min": 9,
+      "median": 9.0,
+      "missed_deadlines": 0,
+      "total_jobs": 40
+    },
+    "Task_5": {
+      "avg": 24.25,
+      "max": 25,
+      "min": 24,
+      "median": 24.0,
+      "missed_deadlines": 0,
+      "total_jobs": 20
+    },
+    "Task_6": {
+      "avg": 6.825,
+      "max": 13,
+      "min": 3,
+      "median": 7.0,
+      "missed_deadlines": 0,
+      "total_jobs": 40
+    },
+    "Task_7": {
+      "avg": 46.5,
+      "max": 66,
+      "min": 23,
+      "median": 46.0,
+      "missed_deadlines": 0,
+      "total_jobs": 10
+    },
+    "Task_8": {
+      "avg": 146.8,
+      "max": 169,
+      "min": 98,
+      "median": 149,
+      "missed_deadlines": 0,
+      "total_jobs": 5
+    },
+    "Task_9": {
+      "avg": 8.5,
+      "max": 15,
+      "min": 5,
+      "median": 7.0,
+      "missed_deadlines": 0,
+      "total_jobs": 20
+    },
+    "Task_10": {
+      "avg": 5.05,
+      "max": 12,
+      "min": 2,
+      "median": 5.0,
+      "missed_deadlines": 0,
+      "total_jobs": 40
+    },
+    "Task_11": {
+      "avg": 15.642857142857142,
+      "max": 24,
+      "min": 8,
+      "median": 14.5,
+      "missed_deadlines": 0,
+      "total_jobs": 14
+    },
+    "Task_12": {
+      "avg": 11.65,
+      "max": 21,
+      "min": 5,
+      "median": 11.0,
+      "missed_deadlines": 0,
+      "total_jobs": 20
+    },
+    "Task_13": {
+      "avg": 22.9,
+      "max": 39,
+      "min": 10,
+      "median": 21.5,
+      "missed_deadlines": 0,
+      "total_jobs": 10
+    },
+    "Task_14": {
+      "avg": 44.0,
+      "max": 68,
+      "min": 22,
+      "median": 39,
+      "missed_deadlines": 0,
+      "total_jobs": 5
+    },
+    "Task_15": {
+      "avg": 37.0,
+      "max": 42,
+      "min": 23,
+      "median": 39,
+      "missed_deadlines": 0,
+      "total_jobs": 7
+    },
+    "Task_16": {
+      "avg": 9.9,
+      "max": 15,
+      "min": 4,
+      "median": 10.0,
+      "missed_deadlines": 0,
+      "total_jobs": 20
+    },
+    "Task_17": {
+      "avg": 1.05,
+      "max": 2,
+      "min": 1,
+      "median": 1.0,
+      "missed_deadlines": 0,
+      "total_jobs": 40
+    },
+    "Task_18": {
+      "avg": 2.625,
+      "max": 5,
+      "min": 1,
+      "median": 3.0,
+      "missed_deadlines": 0,
+      "total_jobs": 40
+    },
+    "Task_19": {
+      "avg": 4.35,
+      "max": 6,
+      "min": 4,
+      "median": 4.0,
+      "missed_deadlines": 0,
+      "total_jobs": 20
+    },
+    "Task_20": {
+      "avg": 12.0,
+      "max": 16,
+      "min": 8,
+      "median": 12.0,
+      "missed_deadlines": 0,
+      "total_jobs": 10
+    },
+    "Task_21": {
+      "avg": 19.142857142857142,
+      "max": 29,
+      "min": 9,
+      "median": 24,
+      "missed_deadlines": 0,
+      "total_jobs": 7
+    },
+    "Task_22": {
+      "avg": 31.5,
+      "max": 36,
+      "min": 31,
+      "median": 31.0,
+      "missed_deadlines": 0,
+      "total_jobs": 10
+    },
+    "Task_23": {
+      "avg": 2.22,
+      "max": 9,
+      "min": 1,
+      "median": 1.0,
+      "missed_deadlines": 0,
+      "total_jobs": 50
+    },
+    "Task_24": {
+      "avg": 9.0,
+      "max": 16,
+      "min": 5,
+      "median": 10.5,
+      "missed_deadlines": 0,
+      "total_jobs": 20
+    },
+    "Task_25": {
+      "avg": 1.0,
+      "max": 1,
+      "min": 1,
+      "median": 1.0,
+      "missed_deadlines": 0,
+      "total_jobs": 200
+    },
+    "Task_26": {
+      "avg": 40.0,
+      "max": 48,
+      "min": 32,
+      "median": 40.0,
+      "missed_deadlines": 0,
+      "total_jobs": 10
+    },
+    "Task_27": {
+      "avg": 117.0,
+      "max": 117,
+      "min": 117,
+      "median": 117,
+      "missed_deadlines": 0,
+      "total_jobs": 5
+    },
+    "Task_28": {
+      "avg": 20.4,
+      "max": 25,
+      "min": 15,
+      "median": 19.5,
+      "missed_deadlines": 0,
+      "total_jobs": 20
+    },
+    "Task_29": {
+      "avg": 43.3,
+      "max": 49,
+      "min": 39,
+      "median": 44.0,
+      "missed_deadlines": 0,
+      "total_jobs": 10
+    },
+    "Task_30": {
+      "avg": 82.0,
+      "max": 84,
+      "min": 79,
+      "median": 82.5,
+      "missed_deadlines": 0,
+      "total_jobs": 10
+    },
+    "Task_31": {
+      "avg": 3.775,
+      "max": 7,
+      "min": 2,
+      "median": 3.0,
+      "missed_deadlines": 0,
+      "total_jobs": 40
+    },
+    "Task_32": {
+      "avg": 22.0,
+      "max": 33,
+      "min": 16,
+      "median": 21.0,
+      "missed_deadlines": 0,
+      "total_jobs": 20
+    },
+    "Task_33": {
+      "avg": 90.0,
+      "max": 92,
+      "min": 87,
+      "median": 90.5,
+      "missed_deadlines": 0,
+      "total_jobs": 4
+    },
+    "Task_34": {
+      "avg": 0,
+      "max": 0,
+      "min": 0,
+      "median": 0,
+      "missed_deadlines": 0,
+      "total_jobs": 0
+    },
+    "Task_35": {
+      "avg": 30.95,
+      "max": 39,
+      "min": 21,
+      "median": 31.5,
+      "missed_deadlines": 0,
+      "total_jobs": 20
+    },
+    "Task_36": {
+      "avg": 5.36,
+      "max": 10,
+      "min": 2,
+      "median": 6.0,
+      "missed_deadlines": 0,
+      "total_jobs": 50
+    },
+    "Task_37": {
+      "avg": 29.333333333333332,
+      "max": 49,
+      "min": 15,
+      "median": 23,
+      "missed_deadlines": 0,
+      "total_jobs": 9
+    },
+    "Task_38": {
+      "avg": 105.5,
+      "max": 138,
+      "min": 71,
+      "median": 106.5,
+      "missed_deadlines": 0,
+      "total_jobs": 4
+    },
+    "Task_39": {
+      "avg": 157.66666666666666,
+      "max": 231,
+      "min": 97,
+      "median": 145,
+      "missed_deadlines": 0,
+      "total_jobs": 3
+    },
+    "Task_40": {
+      "avg": 16.57894736842105,
+      "max": 29,
+      "min": 13,
+      "median": 15,
+      "missed_deadlines": 0,
+      "total_jobs": 19
+    },
+    "Task_41": {
+      "avg": 330.5,
+      "max": 394,
+      "min": 267,
+      "median": 330.5,
+      "missed_deadlines": 0,
+      "total_jobs": 2
+    },
+    "Task_42": {
+      "avg": 759.0,
+      "max": 759,
+      "min": 759,
+      "median": 759,
       "missed_deadlines": 0,
       "total_jobs": 1
+    },
+    "Task_43": {
+      "avg": 6.794871794871795,
+      "max": 15,
+      "min": 2,
+      "median": 7,
+      "missed_deadlines": 0,
+      "total_jobs": 39
+    },
+    "Task_44": {
+      "avg": 73.14285714285714,
+      "max": 127,
+      "min": 45,
+      "median": 69,
+      "missed_deadlines": 0,
+      "total_jobs": 7
+    },
+    "Task_45": {
+      "avg": 98.2,
+      "max": 99,
+      "min": 97,
+      "median": 99,
+      "missed_deadlines": 0,
+      "total_jobs": 5
+    },
+    "Task_46": {
+      "avg": 3.517543859649123,
+      "max": 5,
+      "min": 2,
+      "median": 3.0,
+      "missed_deadlines": 0,
+      "total_jobs": 114
+    },
+    "Task_47": {
+      "avg": 48.23076923076923,
+      "max": 50,
+      "min": 45,
+      "median": 49,
+      "missed_deadlines": 0,
+      "total_jobs": 13
+    },
+    "Task_48": {
+      "avg": 18.25,
+      "max": 19,
+      "min": 17,
+      "median": 19.0,
+      "missed_deadlines": 0,
+      "total_jobs": 24
+    },
+    "Task_49": {
+      "avg": 12.5,
+      "max": 16,
+      "min": 9,
+      "median": 12.5,
+      "missed_deadlines": 0,
+      "total_jobs": 40
+    },
+    "Task_50": {
+      "avg": 40.0,
+      "max": 47,
+      "min": 25,
+      "median": 44.0,
+      "missed_deadlines": 0,
+      "total_jobs": 20
+    },
+    "Task_51": {
+      "avg": 0,
+      "max": 0,
+      "min": 0,
+      "median": 0,
+      "missed_deadlines": 0,
+      "total_jobs": 0
+    },
+    "Task_52": {
+      "avg": 2.832,
+      "max": 3,
+      "min": 2,
+      "median": 3.0,
+      "missed_deadlines": 0,
+      "total_jobs": 250
+    },
+    "Task_53": {
+      "avg": 8.0,
+      "max": 8,
+      "min": 8,
+      "median": 8.0,
+      "missed_deadlines": 0,
+      "total_jobs": 42
+    },
+    "Task_54": {
+      "avg": 41.3,
+      "max": 69,
+      "min": 24,
+      "median": 34.0,
+      "missed_deadlines": 0,
+      "total_jobs": 10
+    },
+    "Task_55": {
+      "avg": 3.225,
+      "max": 13,
+      "min": 1,
+      "median": 1.0,
+      "missed_deadlines": 0,
+      "total_jobs": 40
+    },
+    "Task_56": {
+      "avg": 232.66666666666666,
+      "max": 237,
+      "min": 224,
+      "median": 237,
+      "missed_deadlines": 0,
+      "total_jobs": 3
+    },
+    "Task_57": {
+      "avg": 18.428571428571427,
+      "max": 50,
+      "min": 7,
+      "median": 11.5,
+      "missed_deadlines": 0,
+      "total_jobs": 14
+    },
+    "Task_58": {
+      "avg": 14.0,
+      "max": 41,
+      "min": 1,
+      "median": 13.5,
+      "missed_deadlines": 0,
+      "total_jobs": 20
+    },
+    "Task_59": {
+      "avg": 42.8,
+      "max": 64,
+      "min": 9,
+      "median": 47.5,
+      "missed_deadlines": 0,
+      "total_jobs": 10
+    },
+    "Task_60": {
+      "avg": 300.0,
+      "max": 300,
+      "min": 300,
+      "median": 300,
+      "missed_deadlines": 0,
+      "total_jobs": 3
+    },
+    "Task_61": {
+      "avg": 41.3,
+      "max": 53,
+      "min": 26,
+      "median": 43.0,
+      "missed_deadlines": 0,
+      "total_jobs": 10
+    },
+    "Task_62": {
+      "avg": 75.0,
+      "max": 81,
+      "min": 69,
+      "median": 75.0,
+      "missed_deadlines": 0,
+      "total_jobs": 4
+    },
+    "Task_63": {
+      "avg": 15.9,
+      "max": 25,
+      "min": 4,
+      "median": 17.0,
+      "missed_deadlines": 0,
+      "total_jobs": 30
+    },
+    "Task_64": {
+      "avg": 35.05263157894737,
+      "max": 49,
+      "min": 23,
+      "median": 31,
+      "missed_deadlines": 0,
+      "total_jobs": 19
+    },
+    "Task_65": {
+      "avg": 15.1,
+      "max": 39,
+      "min": 7,
+      "median": 7.0,
+      "missed_deadlines": 0,
+      "total_jobs": 10
+    },
+    "Task_66": {
+      "avg": 139.25,
+      "max": 185,
+      "min": 90,
+      "median": 141.0,
+      "missed_deadlines": 0,
+      "total_jobs": 4
+    },
+    "Task_67": {
+      "avg": 7.394736842105263,
+      "max": 23,
+      "min": 1,
+      "median": 7.0,
+      "missed_deadlines": 0,
+      "total_jobs": 38
+    },
+    "Task_68": {
+      "avg": 16.214285714285715,
+      "max": 36,
+      "min": 4,
+      "median": 14.5,
+      "missed_deadlines": 0,
+      "total_jobs": 14
+    },
+    "Task_69": {
+      "avg": 43.6,
+      "max": 64,
+      "min": 21,
+      "median": 45.5,
+      "missed_deadlines": 0,
+      "total_jobs": 10
+    },
+    "Task_70": {
+      "avg": 0,
+      "max": 0,
+      "min": 0,
+      "median": 0,
+      "missed_deadlines": 0,
+      "total_jobs": 0
+    },
+    "Task_71": {
+      "avg": 9.9,
+      "max": 12,
+      "min": 6,
+      "median": 10.5,
+      "missed_deadlines": 0,
+      "total_jobs": 10
+    },
+    "Task_72": {
+      "avg": 3.25,
+      "max": 8,
+      "min": 2,
+      "median": 3.0,
+      "missed_deadlines": 0,
+      "total_jobs": 20
+    },
+    "Task_73": {
+      "avg": 1.95,
+      "max": 7,
+      "min": 1,
+      "median": 1.0,
+      "missed_deadlines": 0,
+      "total_jobs": 40
+    },
+    "Task_74": {
+      "avg": 59.25,
+      "max": 75,
+      "min": 45,
+      "median": 58.5,
+      "missed_deadlines": 0,
+      "total_jobs": 4
+    },
+    "Task_75": {
+      "avg": 35.6,
+      "max": 38,
+      "min": 32,
+      "median": 36,
+      "missed_deadlines": 0,
+      "total_jobs": 5
+    },
+    "Task_76": {
+      "avg": 1.72,
+      "max": 7,
+      "min": 1,
+      "median": 1.0,
+      "missed_deadlines": 0,
+      "total_jobs": 50
+    },
+    "Task_77": {
+      "avg": 3.02,
+      "max": 8,
+      "min": 1,
+      "median": 2.0,
+      "missed_deadlines": 0,
+      "total_jobs": 50
+    },
+    "Task_78": {
+      "avg": 25.294117647058822,
+      "max": 34,
+      "min": 17,
+      "median": 28,
+      "missed_deadlines": 0,
+      "total_jobs": 17
+    },
+    "Task_79": {
+      "avg": 16.0,
+      "max": 24,
+      "min": 6,
+      "median": 16.0,
+      "missed_deadlines": 0,
+      "total_jobs": 20
+    },
+    "Task_80": {
+      "avg": 34.4,
+      "max": 46,
+      "min": 18,
+      "median": 38.0,
+      "missed_deadlines": 0,
+      "total_jobs": 10
+    },
+    "Task_81": {
+      "avg": 6.25,
+      "max": 12,
+      "min": 2,
+      "median": 5.5,
+      "missed_deadlines": 0,
+      "total_jobs": 40
+    },
+    "Task_82": {
+      "avg": 94.0,
+      "max": 98,
+      "min": 90,
+      "median": 94,
+      "missed_deadlines": 0,
+      "total_jobs": 5
+    },
+    "Task_83": {
+      "avg": 13.837837837837839,
+      "max": 19,
+      "min": 8,
+      "median": 14,
+      "missed_deadlines": 0,
+      "total_jobs": 37
+    },
+    "Task_84": {
+      "avg": 60.0,
+      "max": 72,
+      "min": 46,
+      "median": 67,
+      "missed_deadlines": 0,
+      "total_jobs": 7
+    },
+    "Task_85": {
+      "avg": 298.0,
+      "max": 298,
+      "min": 298,
+      "median": 298,
+      "missed_deadlines": 0,
+      "total_jobs": 1
+    },
+    "Task_86": {
+      "avg": 11.1,
+      "max": 15,
+      "min": 7,
+      "median": 11.0,
+      "missed_deadlines": 0,
+      "total_jobs": 50
+    },
+    "Task_87": {
+      "avg": 13.55,
+      "max": 25,
+      "min": 8,
+      "median": 10.5,
+      "missed_deadlines": 0,
+      "total_jobs": 20
+    },
+    "Task_88": {
+      "avg": 58.0,
+      "max": 59,
+      "min": 55,
+      "median": 59.0,
+      "missed_deadlines": 0,
+      "total_jobs": 10
+    },
+    "Task_89": {
+      "avg": 5.35,
+      "max": 13,
+      "min": 1,
+      "median": 6.0,
+      "missed_deadlines": 0,
+      "total_jobs": 20
+    },
+    "Task_90": {
+      "avg": 97.42857142857143,
+      "max": 106,
+      "min": 90,
+      "median": 96,
+      "missed_deadlines": 0,
+      "total_jobs": 7
+    },
+    "Task_91": {
+      "avg": 0,
+      "max": 0,
+      "min": 0,
+      "median": 0,
+      "missed_deadlines": 0,
+      "total_jobs": 0
+    },
+    "Task_92": {
+      "avg": 25.0,
+      "max": 25,
+      "min": 25,
+      "median": 25.0,
+      "missed_deadlines": 0,
+      "total_jobs": 20
+    },
+    "Task_93": {
+      "avg": 3.5,
+      "max": 4,
+      "min": 3,
+      "median": 3.5,
+      "missed_deadlines": 0,
+      "total_jobs": 200
+    },
+    "Task_94": {
+      "avg": 0,
+      "max": 0,
+      "min": 0,
+      "median": 0,
+      "missed_deadlines": 0,
+      "total_jobs": 0
+    },
+    "Task_95": {
+      "avg": 5.5,
+      "max": 6,
+      "min": 5,
+      "median": 5.5,
+      "missed_deadlines": 0,
+      "total_jobs": 40
+    },
+    "Task_96": {
+      "avg": 24.0,
+      "max": 24,
+      "min": 24,
+      "median": 24.0,
+      "missed_deadlines": 0,
+      "total_jobs": 10
+    },
+    "Task_97": {
+      "avg": 96.0,
+      "max": 96,
+      "min": 96,
+      "median": 96.0,
+      "missed_deadlines": 0,
+      "total_jobs": 4
+    },
+    "Task_98": {
+      "avg": 18.3,
+      "max": 24,
+      "min": 14,
+      "median": 18.0,
+      "missed_deadlines": 0,
+      "total_jobs": 20
+    },
+    "Task_99": {
+      "avg": 28.5,
+      "max": 62,
+      "min": 16,
+      "median": 23.0,
+      "missed_deadlines": 0,
+      "total_jobs": 10
+    },
+    "Task_100": {
+      "avg": 179.33333333333334,
+      "max": 197,
+      "min": 146,
+      "median": 195,
+      "missed_deadlines": 0,
+      "total_jobs": 3
+    },
+    "Task_101": {
+      "avg": 432.0,
+      "max": 432,
+      "min": 432,
+      "median": 432,
+      "missed_deadlines": 0,
+      "total_jobs": 1
+    },
+    "Task_102": {
+      "avg": 93.6,
+      "max": 148,
+      "min": 67,
+      "median": 88,
+      "missed_deadlines": 0,
+      "total_jobs": 5
+    },
+    "Task_103": {
+      "avg": 6.875,
+      "max": 12,
+      "min": 2,
+      "median": 7.0,
+      "missed_deadlines": 0,
+      "total_jobs": 40
+    },
+    "Task_104": {
+      "avg": 990.0,
+      "max": 990,
+      "min": 990,
+      "median": 990,
+      "missed_deadlines": 0,
+      "total_jobs": 1
+    },
+    "Task_105": {
+      "avg": 251.0,
+      "max": 265,
+      "min": 237,
+      "median": 251.0,
+      "missed_deadlines": 0,
+      "total_jobs": 2
+    },
+    "Task_106": {
+      "avg": 19.1,
+      "max": 21,
+      "min": 17,
+      "median": 19.5,
+      "missed_deadlines": 0,
+      "total_jobs": 10
+    },
+    "Task_107": {
+      "avg": 2.75,
+      "max": 5,
+      "min": 2,
+      "median": 2.0,
+      "missed_deadlines": 0,
+      "total_jobs": 40
+    },
+    "Task_108": {
+      "avg": 98.0,
+      "max": 98,
+      "min": 98,
+      "median": 98.0,
+      "missed_deadlines": 0,
+      "total_jobs": 4
+    },
+    "Task_109": {
+      "avg": 14.65,
+      "max": 18,
+      "min": 12,
+      "median": 15.0,
+      "missed_deadlines": 0,
+      "total_jobs": 20
+    },
+    "Task_110": {
+      "avg": 13.9,
+      "max": 18,
+      "min": 10,
+      "median": 14.0,
+      "missed_deadlines": 0,
+      "total_jobs": 40
+    },
+    "Task_111": {
+      "avg": 48.0,
+      "max": 50,
+      "min": 46,
+      "median": 48.0,
+      "missed_deadlines": 0,
+      "total_jobs": 12
+    },
+    "Task_112": {
+      "avg": 0,
+      "max": 0,
+      "min": 0,
+      "median": 0,
+      "missed_deadlines": 0,
+      "total_jobs": 0
+    },
+    "Task_113": {
+      "avg": 22.15,
+      "max": 25,
+      "min": 19,
+      "median": 23.0,
+      "missed_deadlines": 0,
+      "total_jobs": 20
+    },
+    "Task_114": {
+      "avg": 10.2,
+      "max": 13,
+      "min": 8,
+      "median": 9.0,
+      "missed_deadlines": 0,
+      "total_jobs": 40
     }
   }
 }
