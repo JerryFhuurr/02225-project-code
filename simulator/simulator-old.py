@@ -91,16 +91,6 @@ class Task:
         self.response_times.append(self.response_time)
         self.wcrt = max(self.wcrt, self.response_time)
         self.finish_time = finish_time
-
-    def finalize_deadlines(self, simulation_end):
-        """
-        在模拟结束时调用：把仍在执行或未开始的作业中，
-        只要 absolute deadline < simulation_end 都算 missed。
-        """
-        # job 尚未完成且其绝对截止期已过
-        if self.remaining_time > 0:
-            if self.get_absolute_deadline() <= simulation_end:
-                self.response_times.append(self.deadline + 1)  # 随便 >deadline 的数
         
     def get_absolute_deadline(self):
         """Get the absolute deadline of the current job."""
@@ -431,12 +421,7 @@ class HierarchicalScheduler:
         # Run simulation for each core
         for core_id, core in self.cores.items():
             self._simulate_core(core, simulation_time, job_release_times.copy())
-
-        # 修改
-        # —— after for core_id, core in self.cores.items(): loop
-        for task in self.tasks.values():
-            task.finalize_deadlines(simulation_time)
-
+            
         return self.get_statistics()
     
     def _simulate_core(self, core, simulation_time, job_release_times):
@@ -680,10 +665,7 @@ class HierarchicalScheduler:
             component_id = task.component_id
             
             # Check if the task is schedulable (no missed deadlines)
-            # task_schedulable = 1 if task_stats['missed_deadlines'] == 0 else 0
-            # 修改
-            task_schedulable = 1 if task_stats['missed_deadlines'] == 0 and task_stats['total_jobs'] > 0 else 0
-
+            task_schedulable = 1 if task_stats['missed_deadlines'] == 0 else 0
             
             # Add task data to CSV
             csv_data.append({
@@ -825,13 +807,7 @@ def main():
         periods = [task.period for task in scheduler.tasks.values() if hasattr(task, 'period') and task.period]
         simulation_time = lcm_of_list(periods)
         # Make sure simulation time is reasonable (not too long)
-
-        # simulation_time = min(simulation_time, 1000)
-
-        hyper = lcm_of_list(periods)
-        simulation_time = min(max(hyper * 3, 4000), 50000)
-
-
+        simulation_time = min(simulation_time, 1000)
     else:
         simulation_time = args.simtime
     
