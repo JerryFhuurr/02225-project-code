@@ -12,20 +12,19 @@ class Task:
         self.component_id = str(component_id)
         self.priority = self._parse_priority(priority)
 
-        # 运行时属性
         self.adjusted_wcet = None
         self.wcrt = 0.0
         self.schedulable = False
 
     def _validate_input(self, name, wcet, period, comp_id):
         if pd.isna(name) or not name.strip():
-            raise ValueError("任务名称不能为空")
+            raise ValueError("Task name cannot be empty")
         if not isinstance(wcet, (int, float)) or wcet <= 0 or pd.isna(wcet):
-            raise ValueError(f"任务 {name} 的WCET必须为正数")
+            raise ValueError(f"The wcrt of {name} must be positive")
         if not isinstance(period, (int, float)) or period <= 0 or pd.isna(period):
-            raise ValueError(f"任务 {name} 的周期必须为正数")
+            raise ValueError(f"The period of {name} must be positive")
         if pd.isna(comp_id):
-            raise ValueError("组件ID不能为空")
+            raise ValueError("Component ID cannot be empty")
 
     def _parse_priority(self, priority):
         if pd.isna(priority) or priority is None:
@@ -33,7 +32,7 @@ class Task:
         try:
             return int(float(priority))
         except:
-            raise ValueError(f"无效优先级格式: {priority}")
+            raise ValueError(f"Invalid priority format: {priority}")
 
 
 class Component:
@@ -56,17 +55,17 @@ class Component:
 
     def _validate_input(self, cid, sched, core_id, budget, period):
         if pd.isna(cid) or not cid.strip():
-            raise ValueError("组件ID不能为空")
+            raise ValueError("Component ID cannot be empty")
         if pd.isna(core_id):
-            raise ValueError("核心ID不能为空")
+            raise ValueError("Component ID cannot be empty")
         # Allow RM or EDF
         valid_schedulers = {'RM', 'EDF'}
         if sched is None or str(sched).upper() not in valid_schedulers:
-             raise ValueError(f"无效调度策略: '{sched}'. Must be one of {valid_schedulers}")
+             raise ValueError(f"Invalid Scheduler Strategy: '{sched}'. Must be one of {valid_schedulers}")
         if pd.isna(budget) or not isinstance(budget, (int, float)) or budget <= 0:
-            raise ValueError(f"组件 {cid} 预算无效: {budget}")
+            raise ValueError(f"Component {cid} Invalid budget: {budget}")
         if pd.isna(period) or not isinstance(period, (int, float)) or period <= 0:
-            raise ValueError(f"组件 {cid} 周期无效: {period}")
+            raise ValueError(f"Component {cid} Invalid period: {period}")
 
     def _parse_priority(self, priority):
         """Parses priority, allowing it even for EDF components."""
@@ -76,15 +75,10 @@ class Component:
         try:
             # Convert to float first to handle potential decimals before int conversion
             prio = int(float(priority))
-            # --- REMOVED THE CHECK THAT PREVENTED EDF COMPONENTS FROM HAVING PRIORITY ---
-            # # Original check:
-            # if self.scheduler == 'EDF' and prio is not None:
-            #     # This rule is too strict if priority is for core-level scheduling
-            #     raise ValueError(f"EDF组件不应设置优先级: {self.component_id}")
             return prio
         except (ValueError, TypeError) as e:
              # Catch conversion errors and provide a clear message
-            raise ValueError(f"无效优先级格式 '{priority}' for component {self.component_id}: {e}")
+            raise ValueError(f"Invalid priority format '{priority}' for component {self.component_id}: {e}")
 
 
 class Core:
@@ -95,13 +89,12 @@ class Core:
         self.speed_factor = float(speed_factor)
         self.scheduler = str(scheduler).upper()
 
-        # 运行时属性
         self.components = []
 
     def _validate_input(self, cid, speed, sched):
         if pd.isna(cid):
-            raise ValueError("核心ID不能为空")
+            raise ValueError("Core ID cannot be empty")
         if pd.isna(speed) or speed <= 0:
-            raise ValueError(f"核心 {cid} 速度因子无效")
+            raise ValueError(f"Core {cid} speed factor is invalid")
         if sched.upper() not in {'RM', 'EDF'}:
-            raise ValueError(f"无效调度策略: {sched}")
+            raise ValueError(f"Invalid Scheduler Strategy: {sched}")
