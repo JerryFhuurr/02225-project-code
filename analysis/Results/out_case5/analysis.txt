@@ -1,0 +1,122 @@
+============================================================
+[Component Camera_Sensor] sched=RM core=Core_1 speed=1.21
+  BDR interface → α=0.333333, Δ=8.000000  (PRM Q=2.0, P=6.0)
+    ✔ Task_0: R=15.438 ≤ T
+    ✔ Task_1: R=55.107 ≤ T
+  → RM ✔ sched
+============================================================
+[Component Image_Processor] sched=EDF core=Core_1 speed=1.21
+  BDR interface → α=0.160000, Δ=42.000000  (PRM Q=4.0, P=25.0)
+  → EDF ✔ sched
+============================================================
+[Component Bitmap_Processor] sched=RM core=Core_1 speed=1.21
+  BDR interface → α=0.222222, Δ=28.000000  (PRM Q=4.0, P=18.0)
+    ✔ Task_4: R=65.190 ≤ T
+    ✔ Task_5: R=284.612 ≤ T
+  → RM ✔ sched
+============================================================
+[Component Lidar_Sensor] sched=RM core=Core_2 speed=1.34
+  BDR interface → α=0.333333, Δ=4.000000  (PRM Q=1.0, P=3.0)
+    ✔ Task_8: R=8.478 ≤ T
+    ✔ Task_7: R=12.955 ≤ T
+    ✔ Task_6: R=111.463 ≤ T
+    ✔ Task_9: R=312.955 ≤ T
+  → RM ✔ sched
+============================================================
+[Component Control_Unit] sched=EDF core=Core_2 speed=1.34
+  BDR interface → α=0.214286, Δ=22.000000  (PRM Q=3.0, P=14.0)
+  → EDF ✔ sched
+============================================================
+[Component GPS_Sensor] sched=RM core=Core_3 speed=1.16
+  BDR interface → α=0.200000, Δ=8.000000  (PRM Q=1.0, P=5.0)
+    ✔ Task_16: R=29.552 ≤ T
+    ✔ Task_17: R=94.207 ≤ T
+  → RM ✔ sched
+============================================================
+[Component Communication_Unit] sched=RM core=Core_3 speed=1.16
+  BDR interface → α=0.300000, Δ=14.000000  (PRM Q=3.0, P=10.0)
+    ✔ Task_21: R=19.747 ≤ T
+    ✔ Task_19: R=25.494 ≤ T
+    ✔ Task_18: R=36.989 ≤ T
+    ✔ Task_20: R=140.437 ≤ T
+  → RM ✔ sched
+============================================================
+[Component Proximity_Sensor] sched=EDF core=Core_3 speed=1.16
+  BDR interface → α=0.222222, Δ=14.000000  (PRM Q=2.0, P=9.0)
+  → EDF ✔ sched
+============================================================
+[Component Radar_Sensor] sched=EDF core=Core_4 speed=1.48
+  BDR interface → α=0.526316, Δ=18.000000  (PRM Q=10.0, P=19.0)
+  → EDF ✔ sched
+============================================================
+[Component Sonar_Sensor] sched=RM core=Core_4 speed=1.48
+  BDR interface → α=0.250000, Δ=12.000000  (PRM Q=2.0, P=8.0)
+    ✔ Task_28: R=22.811 ≤ T
+    ✔ Task_29: R=66.054 ≤ T
+  → RM ✔ sched
+============================================================
+[Component Laser_Sensor] sched=RM core=Core_5 speed=0.79
+  BDR interface → α=0.500000, Δ=4.000000  (PRM Q=2.0, P=4.0)
+    ✔ Task_30: R=6.532 ≤ T
+    ✔ Task_33: R=14.127 ≤ T
+    ✔ Task_31: R=39.443 ≤ T
+    ✔ Task_32: R=188.810 ≤ T
+  → RM ✔ sched
+============================================================
+[Component Infrared_Sensor] sched=RM core=Core_5 speed=0.79
+  BDR interface → α=0.333333, Δ=4.000000  (PRM Q=1.0, P=3.0)
+    ✔ Task_34: R=11.595 ≤ T
+    ✔ Task_35: R=19.190 ≤ T
+    ✔ Task_36: R=49.570 ≤ T
+  → RM ✔ sched
+============================================================
+[Component Ultraviolet_Sensor] sched=EDF core=Core_6 speed=0.63
+  BDR interface → α=0.266667, Δ=22.000000  (PRM Q=4.0, P=15.0)
+  → EDF ✔ sched
+============================================================
+[Component Thermal_Sensor] sched=EDF core=Core_6 speed=0.63
+  BDR interface → α=0.515152, Δ=32.000000  (PRM Q=17.0, P=33.0)
+  → EDF ✔ sched
+============================================================
+[Component Pressure_Sensor] sched=RM core=Core_7 speed=1.39
+  BDR interface → α=0.142857, Δ=12.000000  (PRM Q=1.0, P=7.0)
+    ✔ Task_49: R=22.072 ≤ T
+    ✔ Task_50: R=27.108 ≤ T
+    ✔ Task_51: R=62.360 ≤ T
+  → RM ✔ sched
+============================================================
+[Component Humidity_Sensor] sched=RM core=Core_7 speed=1.39
+  BDR interface → α=0.533333, Δ=14.000000  (PRM Q=8.0, P=15.0)
+    ✔ Task_52: R=89.540 ≤ T
+    ✔ Task_53: R=198.802 ≤ T
+  → RM ✔ sched
+============================================================
+[Component Temperature_Sensor] sched=EDF core=Core_8 speed=0.63
+  BDR interface → α=0.636364, Δ=8.000000  (PRM Q=7.0, P=11.0)
+  → EDF ✔ sched
+============================================================
+[Component Light_Sensor] sched=RM core=Core_8 speed=0.63
+  BDR interface → α=0.230769, Δ=20.000000  (PRM Q=3.0, P=13.0)
+    ✔ Task_59: R=26.878 ≤ T
+    ✔ Task_58: R=61.270 ≤ T
+    ✔ Task_60: R=157.566 ≤ T
+  → RM ✔ sched
+============================================================
+[Core Core_1] ∑α=0.715556≤1? minΔ=8.000000≥0? → ✔
+============================================================
+[Core Core_2] ∑α=0.547619≤1? minΔ=4.000000≥0? → ✔
+============================================================
+[Core Core_3] ∑α=0.722222≤1? minΔ=8.000000≥0? → ✔
+============================================================
+[Core Core_4] ∑α=0.776316≤1? minΔ=12.000000≥0? → ✔
+============================================================
+[Core Core_5] ∑α=0.833333≤1? minΔ=4.000000≥0? → ✔
+============================================================
+[Core Core_6] ∑α=0.781818≤1? minΔ=22.000000≥0? → ✔
+============================================================
+[Core Core_7] ∑α=0.676190≤1? minΔ=12.000000≥0? → ✔
+============================================================
+[Core Core_8] ∑α=0.867133≤1? minΔ=8.000000≥0? → ✔
+Wrote solution.csv → D:\Desktop\Study\02225 Distributed real-time systems\Project\analysis tool\Results\out_case5/solution.csv
+
+=== Overall case schedulable: True ===
