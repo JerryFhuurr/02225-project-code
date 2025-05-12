@@ -1,2 +1,4 @@
-运行命令
-python main.py
+
+# Command
+
+python main.py --testcase test_cases/4-large-test-case

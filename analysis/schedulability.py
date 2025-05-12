@@ -1,3 +1,5 @@
+# This file contains the SchedulabilityAnalyzer class and the ResponseAnalyzer class.
+
 from models import Task, Component, Core
 from bdr_calculator import BDRCalculator
 import math

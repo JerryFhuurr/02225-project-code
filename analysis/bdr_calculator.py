@@ -1,3 +1,5 @@
+# This file is part of the BDR (Bounded Demand Region) library.
+
 import math
 
 class BDRCalculator:

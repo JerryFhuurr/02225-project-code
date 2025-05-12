@@ -1,3 +1,5 @@
+# This file contains the data models for the system, including Task, Component, and Core classes.
+
 import pandas as pd
 
 class Task:

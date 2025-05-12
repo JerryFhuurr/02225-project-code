@@ -1,3 +1,5 @@
+# This script is the main entry point for the schedulability analysis tool. 
+
 import sys
 import os
 import pandas as pd
